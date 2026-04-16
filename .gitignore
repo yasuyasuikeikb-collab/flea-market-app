@@ -1,0 +1,20 @@
+contact-app.tar.gz
+home/
+
+# Laravel
+/src/vendor
+/src/node_modules
+/src/.env
+/src/storage/*
+!/src/storage/.gitignore
+/src/bootstrap/cache/*
+
+# Docker
+/docker/mysql/data
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
