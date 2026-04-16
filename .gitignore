@@ -1,16 +1,24 @@
-contact-app.tar.gz
-home/
+# アーカイブ
+*.tar
+*.tar.gz
+*.zip
 
 # Laravel
 /src/vendor
 /src/node_modules
 /src/.env
+
+# storage（ログ・キャッシュ）
 /src/storage/*
 !/src/storage/.gitignore
+
 /src/bootstrap/cache/*
+!/src/bootstrap/cache/.gitignore
 
 # Docker
-/docker/mysql/data
+/docker/mysql/data/*
+!/docker/mysql/data/.gitkeep
+/docker/nginx/logs
 
 # OS
 .DS_Store
@@ -18,3 +26,10 @@ Thumbs.db
 
 # Logs
 *.log
+
+# IDE
+.vscode/
+.idea/
+
+# その他
+.env
