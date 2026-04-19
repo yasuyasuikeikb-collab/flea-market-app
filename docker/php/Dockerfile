@@ -1,5 +1,9 @@
 FROM php:8.1-fpm
 
+ARG UID=1000
+ARG GID=1000
+ARG USERNAME=laravel
+
 COPY php.ini /usr/local/etc/php/
 
 RUN apt-get update \
@@ -10,6 +14,7 @@ RUN apt-get update \
     unzip \
     curl \
     libpng-dev \
+    git \
   && docker-php-ext-install \
     pdo_mysql \
     zip \
@@ -20,4 +25,9 @@ RUN apt-get update \
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
+RUN groupadd -g ${GID} ${USERNAME} \
+  && useradd -m -u ${UID} -g ${GID} -s /bin/bash ${USERNAME}
+
 WORKDIR /var/www
+
+USER ${USERNAME}

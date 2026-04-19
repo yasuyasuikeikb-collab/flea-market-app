@@ -10,8 +10,11 @@ services:
       - php
 
   php:
-    build: ./docker/php
-    user: "${UID}:${GID}"
+    build:
+      context: ./docker/php
+      args:
+        UID: ${UID}
+        GID: ${GID}
     working_dir: /var/www
     volumes:
       - ./src:/var/www
