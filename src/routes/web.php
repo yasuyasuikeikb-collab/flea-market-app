@@ -10,11 +10,19 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 
-// Fortify / Laravel 標準
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
+/*
+|--------------------------------------------------------------------------
+| Public
+|--------------------------------------------------------------------------
+*/
+
+// 商品一覧（トップ）
 Route::get('/', [ItemController::class, 'index'])->name('items.index');
+
+// 商品詳細
 Route::get('/item/{item_id}', [ItemController::class, 'show'])->name('items.show');
 
 // 会員登録
@@ -25,7 +33,14 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
+
+/*
+|--------------------------------------------------------------------------
+| Auth Required
+|--------------------------------------------------------------------------
+*/
 Route::middleware('auth')->group(function () {
+
     // ログアウト
     Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
@@ -41,7 +56,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [SellController::class, 'create'])->name('sell.create');
     Route::post('/sell', [SellController::class, 'store'])->name('sell.store');
 
-    // プロフィール画面
+    // プロフィール（マイページ）
     Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage.index');
 
     // プロフィール編集
