@@ -19,6 +19,10 @@ class Purchase extends Model
         'purchased_at',
     ];
 
+    protected $casts = [
+        'purchased_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
