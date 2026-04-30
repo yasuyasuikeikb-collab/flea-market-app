@@ -1,0 +1,126 @@
+/* ==============================
+  Purchase Create
+============================== */
+
+.purchase-page {
+  width: min(100%, 1320px);
+  margin: 0 auto;
+  padding: 64px 32px 96px;
+}
+
+.purchase-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  gap: 64px;
+}
+
+.purchase-item {
+  display: flex;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #000000;
+}
+
+.purchase-item__image-frame {
+  width: 180px;
+  height: 180px;
+  background: #d9d9d9;
+}
+
+.purchase-item__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.purchase-item__name {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.purchase-item__price {
+  margin-top: 12px;
+  font-size: 20px;
+}
+
+.purchase-section {
+  padding: 32px 0;
+  border-bottom: 1px solid #000000;
+}
+
+.purchase-section__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.purchase-section__title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.purchase-section__select {
+  width: 260px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid #5f5f5f;
+  border-radius: 3px;
+}
+
+.purchase-section__link {
+  color: #0073cc;
+  font-size: 14px;
+}
+
+.purchase-section__address {
+  margin-top: 8px;
+  font-weight: 700;
+}
+
+.purchase-section__error {
+  margin-top: 6px;
+  color: #ff5555;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.purchase-summary__list {
+  border: 1px solid #000000;
+}
+
+.purchase-summary__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 72px;
+  border-bottom: 1px solid #000000;
+}
+
+.purchase-summary__row:last-child {
+  border-bottom: none;
+}
+
+.purchase-summary__term,
+.purchase-summary__description {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.purchase-summary__button {
+  width: 100%;
+  height: 48px;
+  margin-top: 32px;
+  border: none;
+  border-radius: 4px;
+  background: #ff5555;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+@media screen and (max-width: 900px) {
+  .purchase-form {
+    grid-template-columns: 1fr;
+  }
+}
