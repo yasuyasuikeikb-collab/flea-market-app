@@ -6,7 +6,7 @@
   <title>COACHTECH フリマ</title>
 
   {{-- 共通CSS --}}
-  <link rel="stylesheet" href="{{ asset('css/common/reset.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/common/sanitize.css') }}">
   <link rel="stylesheet" href="{{ asset('css/common/app.css') }}">
 
   {{-- ページ別CSS --}}
