@@ -14,17 +14,19 @@
 </head>
 <body>
   {{-- 共通ヘッダー --}}
-  <header class="site-header">
-    <h1 class="site-header__logo">
-      <a class="site-header__logo-link" href="{{ route('items.index') }}">
-        <img
-          class="site-header__logo-image"
-          src="{{ asset('images/logo.png') }}"
-          alt="COACHTECH"
-        >
-      </a>
-    </h1>
+<header class="site-header">
+  <h1 class="site-header__logo">
+    <a class="site-header__logo-link" href="{{ route('items.index') }}">
+      <img
+        class="site-header__logo-image"
+        src="{{ asset('images/logo.png') }}"
+        alt="COACHTECH"
+      >
+    </a>
+  </h1>
 
+  @if (!request()->routeIs('login') && !request()->routeIs('register'))
+    {{-- 検索 --}}
     <form class="site-header__search" action="{{ route('items.index') }}" method="get">
       <label class="site-header__search-label" for="keyword">商品検索</label>
       <input
@@ -37,9 +39,10 @@
       >
     </form>
 
-    <nav class="site-header__nav" aria-label="グローバルナビゲーション">
+    {{-- ナビ --}}
+    <nav class="site-header__nav">
       @auth
-        <form class="site-header__logout-form" action="{{ route('logout') }}" method="post">
+        <form action="{{ route('logout') }}" method="post">
           @csrf
           <button class="site-header__nav-button" type="submit">ログアウト</button>
         </form>
@@ -50,8 +53,8 @@
       <a class="site-header__nav-link" href="{{ route('mypage.index') }}">マイページ</a>
       <a class="site-header__sell-link" href="{{ route('sell.create') }}">出品</a>
     </nav>
-  </header>
-
+  @endif
+</header>
   <main class="main">
     @yield('content')
   </main>

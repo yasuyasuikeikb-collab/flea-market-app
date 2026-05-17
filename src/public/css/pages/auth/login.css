@@ -60,4 +60,5 @@
 .auth-form__link a {
   color: #0073cc;
   font-size: 14px;
+  text-decoration: none;
 }
