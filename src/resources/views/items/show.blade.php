@@ -108,8 +108,9 @@
           </article>
         @endforeach
 
+        {{-- コメント投稿フォーム --}}
         @auth
-          <form class="comment-form" action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="post">
+          <form class="comment-form" action="{{ route('comment.store', ['item_id' => $item->id]) }}" method="post" novalidate>
             @csrf
 
             <label class="comment-form__label" for="content">商品へのコメント</label>
@@ -118,6 +119,13 @@
             @error('content')
               <p class="comment-form__error">{{ $message }}</p>
             @enderror
+
+            <button class="comment-form__button" type="submit">コメントを送信する</button>
+          </form>
+        @else
+          <form class="comment-form" action="{{ route('login') }}" method="get">
+            <label class="comment-form__label" for="guest-content">商品へのコメント</label>
+            <textarea id="guest-content" class="comment-form__textarea" name="content"></textarea>
 
             <button class="comment-form__button" type="submit">コメントを送信する</button>
           </form>

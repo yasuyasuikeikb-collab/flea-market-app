@@ -14,16 +14,28 @@
   gap: 64px;
 }
 
+.purchase-form__main {
+  min-width: 0;
+}
+
+/* ==============================
+  Purchase Item
+============================== */
+
 .purchase-item {
   display: flex;
-  gap: 24px;
-  padding-bottom: 32px;
+  gap: 56px;
+  align-items: flex-start;
+  padding: 0 0 56px;
   border-bottom: 1px solid #000000;
 }
 
 .purchase-item__image-frame {
-  width: 180px;
-  height: 180px;
+  flex: 0 0 220px;
+  width: 220px;
+  height: 220px;
+  margin: 0;
+  overflow: hidden;
   background: #d9d9d9;
 }
 
@@ -33,57 +45,155 @@
   object-fit: cover;
 }
 
+.purchase-item__body {
+  padding-top: 8px;
+}
+
 .purchase-item__name {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
 }
 
 .purchase-item__price {
-  margin-top: 12px;
-  font-size: 20px;
+  margin-top: 28px;
+  font-size: 24px;
 }
 
+/* ==============================
+  Purchase Section
+============================== */
+
 .purchase-section {
-  padding: 32px 0;
+  padding: 48px 0;
   border-bottom: 1px solid #000000;
 }
 
 .purchase-section__header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 .purchase-section__title {
-  margin-bottom: 16px;
-  font-size: 18px;
+  margin-bottom: 24px;
+  font-size: 24px;
   font-weight: 700;
-}
-
-.purchase-section__select {
-  width: 260px;
-  height: 36px;
-  padding: 0 12px;
-  border: 1px solid #5f5f5f;
-  border-radius: 3px;
 }
 
 .purchase-section__link {
   color: #0073cc;
-  font-size: 14px;
+  font-size: 16px;
+  text-decoration: none;
 }
 
 .purchase-section__address {
-  margin-top: 8px;
+  margin-top: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .purchase-section__error {
-  margin-top: 6px;
+  margin-top: 8px;
   color: #ff5555;
   font-size: 14px;
   font-weight: 700;
 }
+
+/* ==============================
+  Payment Select
+============================== */
+
+.payment-select {
+  position: relative;
+  width: 220px;
+}
+
+.payment-select__button {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  padding: 0 40px 0 16px;
+  border: 1px solid #5f5f5f;
+  border-radius: 3px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.payment-select__button.is-open {
+  visibility: hidden;
+}
+
+.payment-select__button::after {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  content: "";
+  transform: translateY(-65%) rotate(45deg);
+}
+
+.payment-select__list {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #5f5f5f;
+  border-radius: 3px;
+  background: #636769;
+  list-style: none;
+  overflow: hidden;
+}
+
+.payment-select__list.is-open {
+  display: block;
+}
+
+.payment-select__item {
+  margin: 0;
+}
+
+.payment-select__option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 8px;
+  border: none;
+  background: #636769;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.payment-select__option:hover,
+.payment-select__option.is-selected {
+  background: #4d90e8;
+}
+
+.payment-select__check {
+  width: 12px;
+  visibility: hidden;
+}
+
+.payment-select__option.is-selected .payment-select__check {
+  visibility: visible;
+}
+
+/* ==============================
+  Purchase Summary
+============================== */
 
 .purchase-summary__list {
   border: 1px solid #000000;
@@ -92,7 +202,7 @@
 .purchase-summary__row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 72px;
+  min-height: 88px;
   border-bottom: 1px solid #000000;
 }
 
@@ -105,22 +215,49 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
 }
 
 .purchase-summary__button {
   width: 100%;
-  height: 48px;
-  margin-top: 32px;
+  height: 56px;
+  margin-top: 56px;
   border: none;
   border-radius: 4px;
   background: #ff5555;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
+  cursor: pointer;
 }
+
+/* ==============================
+  Responsive
+============================== */
 
 @media screen and (max-width: 900px) {
   .purchase-form {
     grid-template-columns: 1fr;
+  }
+
+  .payment-select {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .purchase-page {
+    padding: 40px 20px 72px;
+  }
+
+  .purchase-item {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .purchase-item__image-frame {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
   }
 }
