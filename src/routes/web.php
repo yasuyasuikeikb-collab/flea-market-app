@@ -65,8 +65,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/mypage', [MyPageController::class, 'index'])->name('mypage.index');
 
     // プロフィール編集
-    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/mypage/profile', [ProfileController::class, 'edit'])
+  ->middleware(['auth', 'verified'])
+  ->name('profile.edit');
+
+Route::post('/mypage/profile', [ProfileController::class, 'update'])
+  ->middleware(['auth', 'verified'])
+  ->name('profile.update');
 
     // いいね
     Route::post('/item/{item_id}/like', [LikeController::class, 'store'])->name('like.store');

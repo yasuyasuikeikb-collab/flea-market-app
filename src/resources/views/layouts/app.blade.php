@@ -25,7 +25,7 @@
     </a>
   </h1>
 
-  @if (!request()->routeIs('login') && !request()->routeIs('register'))
+  @if (!request()->routeIs('login') && !request()->routeIs('register') && !request()->routeIs('verification.notice'))
     {{-- 検索 --}}
     <form class="site-header__search" action="{{ route('items.index') }}" method="get">
       <label class="site-header__search-label" for="keyword">商品検索</label>

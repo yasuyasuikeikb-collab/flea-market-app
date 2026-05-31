@@ -1,0 +1,48 @@
+/* ==============================
+  Verify Email
+============================== */
+
+.verify-email-page {
+  display: flex;
+  justify-content: center;
+  padding: 120px 20px;
+}
+
+.verify-email-card {
+  width: min(100%, 640px);
+  text-align: center;
+}
+
+.verify-email-card__message {
+  margin-bottom: 32px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.verify-email-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  height: 48px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  background: #e0e0e0;
+  color: #000000;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.verify-email-card__form {
+  margin-top: 32px;
+}
+
+.verify-email-card__resend-button {
+  border: none;
+  background: transparent;
+  color: #0073cc;
+  font-size: 14px;
+  cursor: pointer;
+}
