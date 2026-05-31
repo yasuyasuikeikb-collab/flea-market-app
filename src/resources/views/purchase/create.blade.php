@@ -15,7 +15,7 @@
 
   <section class="purchase-page">
     {{-- 購入フォーム --}}
-    <form class="purchase-form" action="{{ route('purchase.store', ['item_id' => $item->id]) }}" method="post" novalidate>
+    <form class="purchase-form" action="{{ route('purchase.checkout', ['item_id' => $item->id]) }}" method="post" novalidate>
       @csrf
 
       <section class="purchase-form__main">

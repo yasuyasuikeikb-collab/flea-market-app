@@ -48,6 +48,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])->name('purchase.create');
     Route::post('/purchase/{item_id}', [PurchaseController::class, 'store'])->name('purchase.store');
 
+    // stripe決済
+    Route::post('/purchase/{item_id}/checkout', [PurchaseController::class, 'checkout'])->name('purchase.checkout');
+    Route::get('/purchase/{item_id}/success', [PurchaseController::class, 'success'])->name('purchase.success');
+    Route::get('/purchase/{item_id}/cancel', [PurchaseController::class, 'cancel'])->name('purchase.cancel');
+
     // 送付先住所変更
     Route::get('/purchase/address/{item_id}', [PurchaseAddressController::class, 'edit'])->name('purchase.address.edit');
     Route::post('/purchase/address/{item_id}', [PurchaseAddressController::class, 'update'])->name('purchase.address.update');
